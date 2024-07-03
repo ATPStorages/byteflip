@@ -1,0 +1,10 @@
+name = "byteflip"
+description = "Flips bytes according to an endian and a modular type."
+version = "0.1.0-dev"
+
+authors = ["Miko Elbrecht"]
+maintainers = ["Miko Elbrecht <pmt.mailservice@gmail.com>"]
+maintainers-logins = ["ATPStorages"]
+licenses = "GPL-3.0-or-later"
+website = "https://javart.zip"
+tags = ["byte", "endian", "flip", "swap", "msb", "lsb", "big-endian", "little-endian"]
