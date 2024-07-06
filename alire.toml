@@ -1,5 +1,5 @@
 name = "byteflip"
-description = "Flips bytes according to an endian and a modular type."
+description = "Byte flipper for modular types"
 version = "0.1.0-dev"
 
 authors = ["Miko Elbrecht"]
