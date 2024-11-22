@@ -1,51 +1,63 @@
-with System; use System;
-with Interfaces; use Interfaces;
+pragma Ada_2022;
+
+with Ada.Unchecked_Conversion;
+
+with Ada.Text_IO;
 
 package body ByteFlip is
-   Full_Byte : constant Unsigned_128 := 16#FF#;
-   Type_Offset_One_Byte   : constant Natural := Modular_Type'Size - 8;
-   Type_Offset_Size_Bytes : constant Natural := Type_Offset_One_Byte / 8;
-   Type_Size_Bytes_Half   : constant Natural := Modular_Type'Size / 16;
 
-   procedure FlipBytes (M : in out Modular_Type) is
-      N         : Modular_Type := 0;
-      H         : constant Unsigned_128 := Unsigned_128 (M);
-      Extracted : Unsigned_128;
-      To_Move   : Natural;
+   procedure Flip_Bytes (M : in out Modular_Type) is
+
+      type Modular_String is new String (1 .. M'Size / 8);
+      function Modular_To_String is new Ada.Unchecked_Conversion (Modular_Type, Modular_String);
+      function String_To_Modular is new Ada.Unchecked_Conversion (Modular_String, Modular_Type);
+      I, S : Modular_String;
+
    begin
-      for Byte in 0 .. Type_Offset_Size_Bytes loop
-         Extracted := H and Shift_Left (Full_Byte, Byte * 8);
-         To_Move   := 16 * (Byte rem Type_Size_Bytes_Half);
+      S := Modular_To_String (M);
 
-         N := N or (if Byte > Type_Size_Bytes_Half - 1 then
-            Modular_Type (Shift_Right (Extracted, 8 + To_Move))
-         else
-            Modular_Type (Shift_Left (Extracted,
-                                      Type_Offset_One_Byte - To_Move)));
-      end loop;
-      M := N;
-   end FlipBytes;
+      if Modular_Type'Size = 16
+      then
+         I (2) := S (1);
+         I (1) := S (2);
 
-   procedure FlipBytesBE (M : in out Modular_Type) is
-   begin
-      if Default_Bit_Order = Low_Order_First then
-         FlipBytes (M);
-      end if;
-   end FlipBytesBE;
+      elsif Modular_Type'Size = 24
+      then
+         I (3) := S (1);
+         I (2) := S (2);
+         I (1) := S (3);
 
-   procedure FlipBytesLE (M : in out Modular_Type) is
-   begin
-      if Default_Bit_Order = High_Order_First then
-         FlipBytes (M);
-      end if;
-   end FlipBytesLE;
-
-   procedure FlipBytesCHK (M : in out Modular_Type; ForBigEndian : Boolean) is
-   begin
-      if ForBigEndian then
-         FlipBytesBE (M);
       else
-         FlipBytesLE (M);
+         raise Tasking_Error with "Oops";
       end if;
-   end FlipBytesCHK;
+      M := String_To_Modular (I);
+   end Flip_Bytes;
+
+   procedure Flip_Big_Endian_Bytes (M : in out Modular_Type) is
+   begin
+      if Default_Bit_Order = Low_Order_First
+      then
+         Flip_Bytes (M);
+      end if;
+   end Flip_Big_Endian_Bytes;
+
+   procedure Flip_Little_Endian_Bytes (M : in out Modular_Type) is
+   begin
+      if Default_Bit_Order = High_Order_First
+      then
+         Flip_Bytes (M);
+      end if;
+   end Flip_Little_Endian_Bytes;
+
+   procedure Flip_Specified_Endian_Bytes (M : in out Modular_Type; Flip_To : Bit_Order) is
+   begin
+      if Flip_To = Low_Order_First
+      then
+         Flip_Big_Endian_Bytes (M);
+
+      else
+         Flip_Little_Endian_Bytes (M);
+      end if;
+   end Flip_Specified_Endian_Bytes;
+
 end ByteFlip;

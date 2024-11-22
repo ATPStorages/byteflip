@@ -15,6 +15,7 @@ project Byteflip is
    for Library_Kind use Library_Type;
 
    package Compiler is
+      for Switches ("Ada") use ("-gnatyM179");
       for Default_Switches ("Ada") use Byteflip_Config.Ada_Compiler_Switches;
    end Compiler;
 
