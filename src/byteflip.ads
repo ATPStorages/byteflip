@@ -1,5 +1,4 @@
-with System;
-use System;
+with System; use System;
 
 generic
    --  The type to operate on for bit flipping.
