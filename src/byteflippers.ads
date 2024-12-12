@@ -1,9 +1,11 @@
 with Byteflipper_Generics;
 
 package Byteflippers is
-   ------------
-   -- 8 Bits --
-   ------------
+   pragma Pure;
+
+     ------------
+     -- 8 Bits --
+     ------------
 
    type Unsigned_8 is mod 2**8 with
      Size => 8;

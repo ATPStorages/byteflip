@@ -7,6 +7,8 @@ generic
    use Ada.Streams;
    use System;
 package Byteflipper_Generics is
+   pragma Pure;
+
    generic
       type E is (<>);
       Endian : System.Bit_Order;
