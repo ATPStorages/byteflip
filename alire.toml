@@ -1,10 +1,10 @@
 name = "byteflippers"
-description = "Byte flipper for modular types"
-version = "0.1.0-dev"
+description = "Signed/modular types for system, big and little endian reading/writing."
+version = "1.0.0"
 
 authors = ["Miko Elbrecht"]
 maintainers = ["Miko Elbrecht <pmt.mailservice@gmail.com>"]
 maintainers-logins = ["ATPStorages"]
-licenses = "GPL-3.0-or-later"
-website = "https://javart.zip"
+licenses = "Apache-2.0 WITH LLVM-exception"
+website = "https://github.com/Bread-Experts-Group/byteflippers"
 tags = ["byte", "endian", "flip", "swap", "msb", "lsb", "big-endian", "little-endian"]
