@@ -3,6 +3,8 @@ Modular and signed types to convert between big and little endian, such as 50 (0
 
 All types are compatible with `Interfaces` operators, such as `Shift_Left`, `Shift_Right`, `Rotate_Left`, `Rotate_Right`, as well as (where applicable) `xor`, `and`, `or`.
 
+**NOTE:** This library depends on the GNAT compiler, as it depends on the `Provide_Shift_Operators` pragma. If you need support for another compiler, please let me know, and I'll try to support it.
+
 ## Example Use
 ```ada
 with Byteflippers;
