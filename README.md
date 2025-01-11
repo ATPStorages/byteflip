@@ -1,5 +1,5 @@
 # byteflippers
-![https://alire.ada.dev/crates/byteflippers](https://img.shields.io/endpoint?url=https://alire.ada.dev/badges/byteflippers.json)
+[![View the Alire Crate](https://img.shields.io/endpoint?url=https://alire.ada.dev/badges/byteflippers.json)](https://alire.ada.dev/crates/byteflippers)
 
 Modular and signed types to convert between big and little endian, such as 50 (0x00000032) to 838860800 (0x32000000). Currently supported are 16/32/64/128-bit sized signed/modular numeric types for big/little endian respectively, as well as system-endian dependent base types for 8/16/32/64/128-bit signed/modular numeric types.
 
