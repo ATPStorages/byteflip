@@ -62,7 +62,7 @@ package Byteflippers is
 
    package Endians_Signed_32 is new Byteflipper_Generics (Signed_32);
 
-   type Float_32 is digits 6 with Size => 32;
+   type Float_32 is new Float with Size => 32;
 
    package Endians_Float_32 is new Byteflipper_Generics (Float_32);
 
@@ -82,7 +82,7 @@ package Byteflippers is
 
    package Endians_Signed_64 is new Byteflipper_Generics (Signed_64);
 
-   type Float_64 is digits 15 with Size => 64;
+   type Float_64 is new Long_Float with Size => 64;
 
    package Endians_Float_64 is new Byteflipper_Generics (Float_64);
 
@@ -102,7 +102,7 @@ package Byteflippers is
 
    package Endians_Signed_128 is new Byteflipper_Generics (Signed_128);
 
-   type Float_128 is digits 18 with Size => 128;
+   type Float_128 is new Long_Long_Float with Size => 128;
 
    package Endians_Float_128 is new Byteflipper_Generics (Float_128);
 end Byteflippers;
