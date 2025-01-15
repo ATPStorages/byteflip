@@ -31,6 +31,21 @@ package Byteflippers is
 
    package Endians_Signed_16 is new Byteflipper_Generics (Signed_16);
 
+     -----------------------------------------------------
+     -- 24 Bits                                         --
+     -- Shift operators are not available for this type --
+     -----------------------------------------------------
+
+   type Unsigned_24 is mod 2**24 with
+     Size => 24;
+
+   package Endians_Unsigned_24 is new Byteflipper_Generics (Unsigned_24);
+
+   type Signed_24 is range -(2**23) .. (2**23) - 1 with
+     Size => 24;
+
+   package Endians_Signed_24 is new Byteflipper_Generics (Signed_24);
+
      -------------
      -- 32 Bits --
      -------------
@@ -46,6 +61,10 @@ package Byteflippers is
    pragma Provide_Shift_Operators (Signed_32);
 
    package Endians_Signed_32 is new Byteflipper_Generics (Signed_32);
+
+   type Float_32 is digits 6 with Size => 32;
+
+   package Endians_Float_32 is new Byteflipper_Generics (Float_32);
 
      -------------
      -- 64 Bits --
@@ -63,6 +82,10 @@ package Byteflippers is
 
    package Endians_Signed_64 is new Byteflipper_Generics (Signed_64);
 
+   type Float_64 is digits 15 with Size => 64;
+
+   package Endians_Float_64 is new Byteflipper_Generics (Float_64);
+
      --------------
      -- 128 Bits --
      --------------
@@ -78,4 +101,8 @@ package Byteflippers is
    pragma Provide_Shift_Operators (Signed_128);
 
    package Endians_Signed_128 is new Byteflipper_Generics (Signed_128);
+
+   type Float_128 is digits 18 with Size => 128;
+
+   package Endians_Float_128 is new Byteflipper_Generics (Float_128);
 end Byteflippers;

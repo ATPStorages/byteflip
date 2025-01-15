@@ -2,7 +2,7 @@ with Ada.Streams;
 with System;
 
 generic
-   type T is (<>);
+   type T is private;
 
    use Ada.Streams;
    use System;
@@ -10,12 +10,12 @@ package Byteflipper_Generics is
    pragma Pure;
 
    generic
-      type E is (<>);
+      type E is private;
       Endian : System.Bit_Order;
    procedure Read_Integer (Stream : not null access Root_Stream_Type'Class; Item : out E);
 
    generic
-      type E is (<>);
+      type E is private;
       Endian : System.Bit_Order;
    procedure Write_Integer (Stream : not null access Root_Stream_Type'Class; Item : E);
 

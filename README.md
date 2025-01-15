@@ -1,13 +1,15 @@
 # byteflippers
+
 [![View the Alire Crate](https://img.shields.io/endpoint?url=https://alire.ada.dev/badges/byteflippers.json)](https://alire.ada.dev/crates/byteflippers)
 
-Modular and signed types to convert between big and little endian, such as 50 (0x00000032) to 838860800 (0x32000000). Currently supported are 16/32/64/128-bit sized signed/modular numeric types for big/little endian respectively, as well as system-endian dependent base types for 8/16/32/64/128-bit signed/modular numeric types.
+Modular and signed types to convert between big and little endian, such as 50 (0x00000032) to 838860800 (0x32000000). Currently supported are 16/24/[32/64/128]-bit sized signed/modular/fp numeric types for big/little endian respectively, as well as system-endian dependent base types for 8/16/24/[32/64/128]-bit signed/modular/fp numeric types (for both categories: numbers in square brackets indicate the supported sizes of floating-points (fp.)))
 
 All types are compatible with `Interfaces` operators, such as `Shift_Left`, `Shift_Right`, `Rotate_Left`, `Rotate_Right`, as well as (where applicable) `xor`, `and`, `or`.
 
 **NOTE:** This library depends on the GNAT compiler, as it depends on the `Provide_Shift_Operators` pragma. If you need support for another compiler, please let me know, and I'll try to support it.
 
 ## Example Use
+
 ```ada
 with Byteflippers;
 
