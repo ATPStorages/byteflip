@@ -16,7 +16,7 @@ project Byteflippers is
 
 
    package Builder is
-      for Switches ("Ada") use ("-m2", "-d", "-s", "-j0", "-largs", "-Wl,--gc-sections");
+      for Switches ("Ada") use ("-m2", "-d", "-s", "-j0", "-gnatwae");
    end Builder;
 
    package Compiler is

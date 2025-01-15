@@ -13,7 +13,7 @@ package body Byteflipper_Generics is
    begin
       Discrete_String'Read (Stream, String_Read);
       if Endian /= Default_Bit_Order then
-         String_Read := (for C of reverse String_Read => C);
+         String_Read := [for C of reverse String_Read => C];
       end if;
       Item := String_To_E (String_Read);
    end Read_Integer;
@@ -23,7 +23,7 @@ package body Byteflipper_Generics is
       As_String : Discrete_String := E_To_String (Item);
    begin
       if Endian /= Default_Bit_Order then
-         As_String := (for C of reverse As_String => C);
+         As_String := [for C of reverse As_String => C];
       end if;
       Discrete_String'Write (Stream, As_String);
    end Write_Integer;
