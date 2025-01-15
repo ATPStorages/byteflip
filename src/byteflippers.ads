@@ -102,7 +102,9 @@ package Byteflippers is
 
    package Endians_Signed_128 is new Byteflipper_Generics (Signed_128);
 
+   pragma Warnings (Off, "bits of*unused");
    type Float_128 is new Long_Long_Float with Size => 128;
+   pragma Warnings (On, "bits of*unused");
 
    package Endians_Float_128 is new Byteflipper_Generics (Float_128);
 end Byteflippers;
