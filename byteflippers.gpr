@@ -20,7 +20,7 @@ project Byteflippers is
 
    package Compiler is
       for Switches ("Ada") use
-         ("-gnat2022",
+         Byteflippers_Config.Ada_Compiler_Switches & ("-gnat2022",
           "-gnatwae",
           "-gnatwh",
           "-gnatw.h",
@@ -34,7 +34,6 @@ project Byteflippers is
           "-gnatw_s",
           "-gnatwt",
           "-gnatw.u");
-      for Default_Switches ("Ada") use Byteflippers_Config.Ada_Compiler_Switches;
    end Compiler;
 
    package Binder is
