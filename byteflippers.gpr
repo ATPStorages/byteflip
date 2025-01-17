@@ -14,13 +14,26 @@ project Byteflippers is
      external ("BYTEFLIPPERS_LIBRARY_TYPE", external ("LIBRARY_TYPE", "static"));
    for Library_Kind use Library_Type;
 
-
    package Builder is
       for Switches ("Ada") use ("-m2", "-d", "-s", "-j0", "-gnatwae");
    end Builder;
 
    package Compiler is
-      for Switches ("Ada") use ("-gnat2022", "-gnatyM179", "-g", "-gnateE");
+      for Switches ("Ada") use
+         ("-gnat2022",
+          "-gnatwae",
+          "-gnatwh",
+          "-gnatw.h",
+          "-gnatwl",
+          "-gnatwo",
+          "-gnatw.o",
+          "-gnatw.q",
+          "-gnatw_q",
+          "-gnatw_r",
+          "-gnatw.s",
+          "-gnatw_s",
+          "-gnatwt",
+          "-gnatw.u");
       for Default_Switches ("Ada") use Byteflippers_Config.Ada_Compiler_Switches;
    end Compiler;
 
